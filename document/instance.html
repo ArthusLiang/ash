@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  		<title>Instance | Ash - document</title>
+<meta charset='utf-8'>
+<link rel="icon" type="image/x-icon" href="../img/fav.ico">
+<meta name="viewport" content="width=device-width,minimal-ui,target-densitydpi=device-dpi"  >
+<meta name="keywords" content="Jsonic,javascript,html5,web audio,前端框架" />
+<meta name="description" content="A javascript framework named Jsonic. Make user experience on sound more wonderful." />
+<link rel="stylesheet" type="text/css" href="../css/public.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../css/github_gist.css" media="screen">
+<script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="../js/ash.js"></script>
+<script type="text/javascript" src="../js/highlight.pack.js"></script>
+<style type="text/css"> 
+.demo_block{position:absolute; top:50px; left:0px; width:60px; height:60px; background-color:#64B5F6;border-radius:50%;}
+.demo_holder{width: 100%; height: 200px; position: relative;}
+</style>
+<script type="text/javascript">
+$(function(){
+	var block = document.getElementById('demo_block'),
+		 myAsh = new Ash.S([{
+		    dom: block,
+		    css:[{left:'0px',width:'60px',height:'60px'},
+		    {left:'400px',width:'40px',height:'40px'}],
+		    time:100
+		 }]);
+	document.getElementById('demo_btn_play').onclick= function(){
+		myAsh.play();
+	};
+	document.getElementById('demo_btn_stop').onclick= function(){
+		myAsh.stop();
+	};	
+	document.getElementById('demo_btn_repeat').onclick= function(){
+		myAsh.repeat(Infinity);
+	};	
+	
+});
+</script>
+  </head>
+  <body>
+  		<nav class='nav'>
+	<a  href='' >Home</a><a class=current href='' >Document</a><a  href='' >Api</a><a  href='' >Demo</a>
+</nav>
+<div class='board'></div>
+      	<div class='container'>
+      		<aside class='aside'>
+	
+		<a   href='get-start.html'>Get Start</a>
+	
+		<a class=current  href='instance.html'>Instance</a>
+	
+		<a   href='tween.html'>Tween</a>
+	
+		<a   href='ird.html'>IRD</a>
+	
+		<a   href='time-unit.html'>Time Unit</a>
+	
+</aside>
+          	<div class='main'>
+          		<article class='article'>
+	<header class='article_header'>
+		<h1>Instance</h1>
+	</header>
+	<div class='article_body'>
+		<h1 id="create-an-instance">Create an instance</h1>
+<p>After reading the last article, you will be able to write lots of animation with ash.play. It&#39;s a quit way to create animation. But if you want to use some more powerful feature of ash.js, you should learn how to create an instance of ash and use it.</p>
+<h2 id="use-new">use new</h2>
+<pre><code>var myAsh = new Ash.S([{
+    dom:document.getElementById(&#39;Hello&#39;),
+    css:[{width:&#39;100px&#39;},{width:&#39;200px&#39;}],
+    time:20
+}]);
+</code></pre><p>The parameters are the same as those in Ash.play.</p>
+<h2 id="use-ash-play">use ash.play</h2>
+<pre><code>var myAsh = Ash.play([{
+    dom:document.getElementById(&#39;Hello&#39;),
+    css:[{width:&#39;100px&#39;},{width:&#39;200px&#39;}],
+    time:20
+}]);
+</code></pre><p>Actually, <code>Ash.play</code> will create an instance of Ash.S. You just need to announce a varible to store it.</p>
+<h1 id="more-function">More function</h1>
+<p>You will be able to get more function after you get an instance of Ash.S. You can find some more detail in the Api documents. Here is a demo to show some of them.</p>
+<h3 id="html">html</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Hello React!&lt;/title&gt;   
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;test.css&quot; media=&quot;screen&quot;&gt; 
+    &lt;script src=&quot;ash.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;test.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+     &lt;div class=&#39;demo_holder&#39;&gt;
+        &lt;div id=&quot;demo_block&quot; class=&#39;demo_block&#39;&gt;&lt;/div&gt;
+     &lt;/div&gt;
+    &lt;a id=&#39;demo_btn_play&#39; class=&#39;demo_btn&#39;&gt;Play&lt;/a&gt;
+    &lt;a id=&#39;demo_btn_stop&#39; class=&#39;demo_btn&#39;&gt;Stop&lt;/a&gt;
+    &lt;a id=&#39;demo_btn_repeat&#39; class=&#39;demo_btn&#39;&gt;Repeat&lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="test-css">test.css</h3>
+<pre><code>.demo_block{position:absolute; top:50px; left:0px; width:60px; height:60px; background-color:#64B5F6;border-radius:50%;}
+.demo_holder{width: 100%; height: 200px; position: relative;}
+.demo_btn{display: inline-block; padding: 10px 20px; text-align: center; color: white; border-radius: 4px; background-color: #03A9F4; cursor: pointer;}
+.demo_btn:hover{ background-color: #0288D1; }
+</code></pre><h3 id="test-javscript">test.javscript</h3>
+<pre><code>window.onload = function(){
+    var block = document.getElementById(&#39;demo_block&#39;),
+         myAsh = new Ash.S([{
+            dom: block,
+            css:[{left:&#39;0px&#39;,width:&#39;60px&#39;,height:&#39;60px&#39;},
+            {left:&#39;400px&#39;,width:&#39;40px&#39;,height:&#39;40px&#39;}],
+            time:100
+         }]);
+    document.getElementById(&#39;demo_btn_play&#39;).onclick= function(){
+        myAsh.play();
+    };
+    document.getElementById(&#39;demo_btn_stop&#39;).onclick= function(){
+        myAsh.stop();
+    };    
+    document.getElementById(&#39;demo_btn_repeat&#39;).onclick= function(){
+        myAsh.repeat(Infinity);
+    };    
+};
+</code></pre><h3 id="demo">demo</h3>
+<div class='demo_con'>     <div class='demo_holder'>
+        <div id="demo_block" class='demo_block'></div>
+     </div>
+    <a id='demo_btn_play' class='demo_btn'>Play</a>
+    <a id='demo_btn_stop' class='demo_btn'>Stop</a>
+    <a id='demo_btn_repeat' class='demo_btn'>Repeat</a>
+  </div>
+		
+	</div>
+	<footer class='article_footer'>
+		<div class="pagination"><a class="pre" href="get-start.html">← Prev</a><a class="next" href="tween.html">Next →</a></div> 	
+	</footer>
+</article>
+       	
+          	</div>
+      	</div>	
+      <footer class='copyright'>
+	<p>©2015-2016 <a target="_blank" href="https://en.wikipedia.org/wiki/MIT_License" class='license'>MIT license</a></p>
+</footer>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </body>
