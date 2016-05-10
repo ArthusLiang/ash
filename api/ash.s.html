@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  		<title>Ash.S | Ash - api</title>
+<meta charset='utf-8'>
+<link rel="icon" type="image/x-icon" href="../img/fav.ico">
+<meta name="viewport" content="width=device-width,minimal-ui,target-densitydpi=device-dpi"  >
+<meta name="keywords" content="Jsonic,javascript,html5,web audio,前端框架" />
+<meta name="description" content="A javascript framework named Jsonic. Make user experience on sound more wonderful." />
+<link rel="stylesheet" type="text/css" href="../css/public.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../css/github_gist.css" media="screen">
+<script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="../js/ash.js"></script>
+<script type="text/javascript" src="../js/highlight.pack.js"></script>
+<style type="text/css"></style>
+<script type="text/javascript">
+$(function(){
+});
+</script>
+  </head>
+  <body>
+  		<nav class='nav'>
+	<a  href='../' >Home</a><a  href='../document' >Document</a><a class=current href='../api' >Api</a><a  href='../demo' >Demo</a>
+</nav>
+<div class='board'></div>
+      	<div class='container'>
+      		<aside class='aside'>
+	
+		<a   href='index.html'>Ash</a>
+	
+		<a class=current  href='ash.s.html'>Ash.S</a>
+	
+		<a   href='ash.tween.html'>Ash.Tween</a>
+	
+</aside>
+          	<div class='main'>
+          		<article class='article'>
+	<header class='article_header'>
+		<h1>Ash.S</h1>
+	</header>
+	<div class='article_body'>
+		<h1 id="constructor">Constructor</h1>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th style="text-align:center">optional</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scripts</td>
+<td style="text-align:center">No</td>
+<td>An array to ojbect to descript the animation</td>
+</tr>
+<tr>
+<td>renderGap</td>
+<td style="text-align:center">Yes</td>
+<td>How many frame for each rendering</td>
+</tr>
+<tr>
+<td>endFunc</td>
+<td style="text-align:center">Yes</td>
+<td>Callback function when the animation ends</td>
+</tr>
+<tr>
+<td>stopFunc</td>
+<td style="text-align:center">Yes</td>
+<td>Callback function when the animation is stopped</td>
+</tr>
+</tbody>
+</table>
+<h1 id="function">function</h1>
+<h3 id="play">play</h3>
+<p>play the animation from one frame to another.</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th style="text-align:center">optional</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startFrame</td>
+<td style="text-align:center">Yes</td>
+<td>Define the frame to start the animation. Default 1</td>
+</tr>
+<tr>
+<td>endFrame</td>
+<td style="text-align:center">Yes</td>
+<td>Define the frame to end the animation. Default the last frame</td>
+</tr>
+<tr>
+<td>repeat</td>
+<td style="text-align:center">Yes</td>
+<td>How many times will the animation repeat. Default 1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="continue">continue</h3>
+<p>play the animation from where it stopped.</p>
+<h3 id="stop">stop</h3>
+<p>stop the animation.</p>
+<h3 id="reverse">reverse</h3>
+<p>play the animation from the endFrame to the startFrame.</p>
+<h3 id="repeat">repeat</h3>
+<p>repeat the animation</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th style="text-align:center">optional</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num</td>
+<td style="text-align:center">Yes</td>
+<td>How many times will the animation repeat Default 1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="property">property</h1>
+		
+	</div>
+	<footer class='article_footer'>
+		<div class="pagination"><a class="pre" href="index.html">← Prev</a><a class="next" href="ash.tween.html">Next →</a></div> 	
+	</footer>
+</article>
+       	
+          	</div>
+      	</div>	
+      <footer class='copyright'>
+	<p>©2015-2016 <a target="_blank" href="https://en.wikipedia.org/wiki/MIT_License" class='license'>MIT license</a></p>
+</footer>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

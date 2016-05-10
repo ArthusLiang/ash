@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>document | Ash - document</title>
+  		<title>Get Start | Ash - document</title>
 <meta charset='utf-8'>
 <link rel="icon" type="image/x-icon" href="../img/fav.ico">
 <meta name="viewport" content="width=device-width,minimal-ui,target-densitydpi=device-dpi"  >
@@ -12,18 +12,39 @@
 <script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
 <script type="text/javascript" src="../js/ash.js"></script>
 <script type="text/javascript" src="../js/highlight.pack.js"></script>
-
-
+<style type="text/css"> 
+.demo_block{position:absolute; top:50px; left:0px; width:60px; height:60px; background-color:#64B5F6;border-radius:50%;}
+.demo_holder{width: 100%; height: 200px; position: relative;}
+</style>
+<script type="text/javascript">
+$(function(){
+	var isMoving = false; 
+		 block = document.getElementById('demo_block');
+	document.getElementById('demo_btn').onclick= function(){
+		if(!isMoving){
+			isMoving = true;
+			Ash.play([{
+			    dom: block,
+			    css:[{left:'0px'},{left:'400px'}],
+			    time:100
+			}],function(){
+				isMoving = false;
+			});		
+		}
+	};
+	
+});
+</script>
   </head>
   <body>
-      <nav class='nav'>
-	<a  href='' >Home</a><a class=current href='' >Document</a><a  href='' >Api</a><a  href='' >Demo</a>
+  		<nav class='nav'>
+	<a  href='../' >Home</a><a class=current href='../document' >Document</a><a  href='../api' >Api</a><a  href='../demo' >Demo</a>
 </nav>
 <div class='board'></div>
-      <div class='container'>
-          <aside class='aside'>
+      	<div class='container'>
+      		<aside class='aside'>
 	
-		<a   href='get-start.html'>Get Start</a>
+		<a class=current  href='index.html'>Get Start</a>
 	
 		<a   href='instance.html'>Instance</a>
 	
@@ -34,12 +55,164 @@
 		<a   href='time-unit.html'>Time Unit</a>
 	
 </aside>
-          <div class='main'>
-            
-          </div>
-      </div>
+          	<div class='main'>
+          		<article class='article'>
+	<header class='article_header'>
+		<h1>Get Start</h1>
+	</header>
+	<div class='article_body'>
+		<p>Ash is a small and feature-rich javascript library. It helps to improve the interaction of animation in HTML5 website or apps. With Ash, you can control different animation in one time-axis easily. The most exciting thing is that you can write your own plug-in for Ash, this will enable you to implement much more fantastical effect.</p>
+<h1 id="write-you-first-animation">Write you first animation</h1>
+<p>I will teach you how to use Ash to make amazing thing. Make sure you have loaded Ash.js before you try to write any demo. Here is a very easy demo to move an element;</p>
+<h3 id="html">html</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Hello React!&lt;/title&gt;   
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;test.css&quot; media=&quot;screen&quot;&gt; 
+    &lt;script src=&quot;ash.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;test.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+       &lt;div class=&#39;demo_holder&#39;&gt;
+        &lt;div id=&quot;demo_block&quot; class=&#39;demo_block&#39;&gt;&lt;/div&gt;
+       &lt;/div&gt;
+    &lt;a id=&#39;demo_btn&#39; class=&#39;demo_btn&#39;&gt;Play&lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="test-css">test.css</h3>
+<pre><code>.demo_block{position:absolute; top:50px; left:0px; width:60px; height:60px; background-color:#64B5F6;border-radius:50%;}
+.demo_holder{width: 100%; height: 200px; position: relative;}
+.demo_btn{display: inline-block; padding: 10px 20px; text-align: center; color: white; border-radius: 4px; background-color: #03A9F4; cursor: pointer;}
+.demo_btn:hover{ background-color: #0288D1; }
+</code></pre><h3 id="test-js">test.js</h3>
+<pre><code>window.onload = function(){
+    var isMoving = false; 
+         block = document.getElementById(&#39;demo_block&#39;);
+    document.getElementById(&#39;demo_btn&#39;).onclick= function(){
+        if(!isMoving){
+            isMoving = true;
+            Ash.play([{
+                dom: block,
+                css:[{left:&#39;0px&#39;},{left:&#39;400px&#39;}],
+                time:100
+            }],function(){
+                isMoving = false;
+            });        
+        }
+    };
+};
+</code></pre><h3 id="demo">demo</h3>
+<p>Please click the &#39;Play&#39; button to check the effect of the code.</p>
+<div class='demo_con'>  	 <div class='demo_holder'>
+    	<div id="demo_block" class='demo_block'></div>
+  	 </div>
+    <a id='demo_btn' class='demo_btn'>Play</a>
+  </div>
+<h1 id="learn-the-basical-usage">Learn the basical usage</h1>
+<h2 id="ash-play">Ash.play</h2>
+<p>According to the source code below, you should know the first method of Ash, <code>Ash.play</code> !  The function &#39;play&#39; accepts 4 parameters.  The following the code to define the function &#39;play&#39;.</p>
+<pre><code>var play=function(scripts,renderGap,endFunc,stopFunc){
+</code></pre><h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th style="text-align:center">optional</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scripts</td>
+<td style="text-align:center">No</td>
+<td>An array to ojbect to descript the animation</td>
+</tr>
+<tr>
+<td>renderGap</td>
+<td style="text-align:center">Yes</td>
+<td>How many frame for each rendering</td>
+</tr>
+<tr>
+<td>endFunc</td>
+<td style="text-align:center">Yes</td>
+<td>Callback function when the animation ends</td>
+</tr>
+<tr>
+<td>stopFunc</td>
+<td style="text-align:center">Yes</td>
+<td>Callback function when the animation is stopped</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scripts">scripts</h3>
+<p>The scripts is the most important argument. Let&#39;s its element script in our site. The following table shows the attributes for the script.g</p>
+<table>
+<thead>
+<tr>
+<th>attribute</th>
+<th style="text-align:center">optional</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dom</td>
+<td style="text-align:center">Yes</td>
+<td>The animation element(s)</td>
+</tr>
+<tr>
+<td>css</td>
+<td style="text-align:center">Yes</td>
+<td>An array contains dom&#39;s state in the begining and the ending of the animation</td>
+</tr>
+<tr>
+<td>attr</td>
+<td style="text-align:center">Yes</td>
+<td>Similar with css, but it descript of dom&#39;s attribute</td>
+</tr>
+<tr>
+<td>time</td>
+<td style="text-align:center">Yes</td>
+<td>How long will the animation last.(The unit is frame)</td>
+</tr>
+<tr>
+<td>delay</td>
+<td style="text-align:center">Yes</td>
+<td>delay time</td>
+</tr>
+<tr>
+<td>tween</td>
+<td style="text-align:center">Yes</td>
+<td>The name of easing formula.  Such as &#39;linear&#39;,&#39;easeIn&#39; and so on</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ash-stop">Ash.stop</h2>
+<p>You can stop the animtion with this function. </p>
+<pre><code>//start animation
+var id = Ash.play([{
+    dom:document.getElementById(&#39;div&#39;),
+    css:[{width:&#39;100px&#39;},{width:&#39;200px&#39;}],
+    time:200
+}]);
+//stop the animation after 1 secord.
+setTimeout(function(){
+    Ash.stop(id);
+},1000);
+</code></pre>		
+	</div>
+	<footer class='article_footer'>
+		<div class="pagination"><a class="next" href="instance.html">Next →</a></div> 	
+	</footer>
+</article>
+       	
+          	</div>
+      	</div>	
       <footer class='copyright'>
 	<p>©2015-2016 <a target="_blank" href="https://en.wikipedia.org/wiki/MIT_License" class='license'>MIT license</a></p>
 </footer>
 <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
   </body>
+</html>

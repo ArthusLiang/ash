@@ -1,6 +1,7 @@
 title: Get Start
 desc: Ash is a small and feature-rich javascript library. It helps to improve the interaction of animation in HTML5 website or apps. 
 navIndex: 1
+IsIndex: true
 ---
 Ash is a small and feature-rich javascript library. It helps to improve the interaction of animation in HTML5 website or apps. With Ash, you can control different animation in one time-axis easily. The most exciting thing is that you can write your own plug-in for Ash, this will enable you to implement much more fantastical effect.
 
