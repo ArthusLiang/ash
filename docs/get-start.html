@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  		<title>Get Start | Ash - document</title>
+  		<title>Get Start | Ash - Docs</title>
 <meta charset='utf-8'>
 <link rel="icon" type="image/x-icon" href="../img/fav.ico">
 <meta name="viewport" content="width=device-width,minimal-ui,target-densitydpi=device-dpi"  >
@@ -12,12 +12,14 @@
 <script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
 <script type="text/javascript" src="../js/ash.js"></script>
 <script type="text/javascript" src="../js/highlight.pack.js"></script>
-<style type="text/css"> 
+<style type="text/css">/*demo1*/ 
 .demo_block{position:absolute; top:50px; left:0px; width:60px; height:60px; background-color:#64B5F6;border-radius:50%;}
 .demo_holder{width: 100%; height: 200px; position: relative;}
+/*demo1*/
 </style>
 <script type="text/javascript">
 $(function(){
+//demo1
 	var isMoving = false; 
 		 block = document.getElementById('demo_block');
 	document.getElementById('demo_btn').onclick= function(){
@@ -32,19 +34,19 @@ $(function(){
 			});		
 		}
 	};
-	
+	//demo1
 });
 </script>
   </head>
   <body>
   		<nav class='nav'>
-	<a  href='../' >Home</a><a class=current href='../document' >Document</a><a  href='../api' >Api</a><a  href='../demo' >Demo</a>
+	<a  href='' >Home</a><a  href='' >Docs</a><a  href='' >Api</a><a  href='' >Demo</a>
 </nav>
 <div class='board'></div>
       	<div class='container'>
       		<aside class='aside'>
 	
-		<a class=current  href='index.html'>Get Start</a>
+		<a class=current  href='get-start.html'>Get Start</a>
 	
 		<a   href='instance.html'>Instance</a>
 	
@@ -105,11 +107,13 @@ $(function(){
 };
 </code></pre><h3 id="demo">demo</h3>
 <p>Please click the &#39;Play&#39; button to check the effect of the code.</p>
-<div class='demo_con'>  	 <div class='demo_holder'>
+<div class='demo_con'><!--demo1-->
+  	 <div class='demo_holder'>
     	<div id="demo_block" class='demo_block'></div>
   	 </div>
     <a id='demo_btn' class='demo_btn'>Play</a>
-  </div>
+  <!--demo1--></div>
+<p><img src="../img_data/rotate.png" alt="rotate"/></p>
 <h1 id="learn-the-basical-usage">Learn the basical usage</h1>
 <h2 id="ash-play">Ash.play</h2>
 <p>According to the source code below, you should know the first method of Ash, <code>Ash.play</code> !  The function &#39;play&#39; accepts 4 parameters.  The following the code to define the function &#39;play&#39;.</p>
@@ -204,7 +208,10 @@ setTimeout(function(){
 </code></pre>		
 	</div>
 	<footer class='article_footer'>
-		<div class="pagination"><a class="next" href="instance.html">Next →</a></div> 	
+		<div class="pagination">
+			
+			<a class="next" href="instance.html">Next →</a> 	 	
+		</div>		
 	</footer>
 </article>
        	
@@ -215,4 +222,3 @@ setTimeout(function(){
 </footer>
 <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
   </body>
-</html>

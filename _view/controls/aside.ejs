@@ -1,5 +1,5 @@
 <aside class='aside'>
-	<% for(var i in Articles){ %>
-		<a <%= Articles[i].DocName=== title ? 'class=current' :'' %>  href='<%= Articles[i].FileName %>'><%= Articles[i].DocName %></a>
+	<% for(var i in List){ %>
+		<a <%= List[i].Title=== Title ? 'class=current' :'' %>  href='<%= List[i].Url %>'><%= List[i].Title %></a>
 	<% } %>
 </aside>

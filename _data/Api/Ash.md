@@ -1,6 +1,5 @@
-title: Ash
-navIndex: 1
-IsIndex: true
+Title: Ash
+SortIndex: 1
 ---
 
 # function

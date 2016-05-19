@@ -1,4 +1,5 @@
 title: Instance
+SortIndex: 2
 ---
 
 # Create an instance

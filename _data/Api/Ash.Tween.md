@@ -1,4 +1,5 @@
-title: Ash.Tween
+Title: Ash.Tween
+SortIndex: 3
 ---
 # function
 

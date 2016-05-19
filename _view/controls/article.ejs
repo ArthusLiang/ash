@@ -1,11 +1,14 @@
 <article class='article'>
 	<header class='article_header'>
-		<h1><%= title %></h1>
+		<h1><%= Title %></h1>
 	</header>
 	<div class='article_body'>
-		<%- MDText %>		
+		<%- Content %>		
 	</div>
 	<footer class='article_footer'>
-		<%- PaginationHTML %> 	
+		<div class="pagination">
+			<%- List_Prev %>
+			<%- List_Next %> 	 	
+		</div>		
 	</footer>
 </article>
