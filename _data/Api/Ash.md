@@ -1,5 +1,6 @@
 Title: Ash
 SortIndex: 1
+IndexPage: true
 ---
 
 # function

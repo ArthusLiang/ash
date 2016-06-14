@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-  		<title>Ash | Ash - api</title>
+  		<title>Ash.S | Ash - pi</title>
 <meta charset='utf-8'>
-<link rel="icon" type="image/x-icon" href="../img/fav.ico">
+<link rel="icon" type="image/x-icon" href="../../img/fav.ico">
 <meta name="viewport" content="width=device-width,minimal-ui,target-densitydpi=device-dpi"  >
 <meta name="keywords" content="Jsonic,javascript,html5,web audio,前端框架" />
 <meta name="description" content="A javascript framework named Jsonic. Make user experience on sound more wonderful." />
-<link rel="stylesheet" type="text/css" href="../css/public.css" media="screen">
-<link rel="stylesheet" type="text/css" href="../css/github_gist.css" media="screen">
-<script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
-<script type="text/javascript" src="../js/ash.js"></script>
-<script type="text/javascript" src="../js/highlight.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/public.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../../css/github_gist.css" media="screen">
+<script type="text/javascript" src="../../js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="../../js/ash.js"></script>
+<script type="text/javascript" src="../../js/highlight.pack.js"></script>
 <style type="text/css"></style>
 <script type="text/javascript">
 $(function(){
@@ -26,22 +26,16 @@ $(function(){
       	<div class='container'>
       		<aside class='aside'>
 	
-		<a class=current  href='ash.html'>Ash</a>
-	
-		<a   href='ash.s.html'>Ash.S</a>
-	
-		<a   href='ash.tween.html'>Ash.Tween</a>
+		<a class=current  href='copy.html'>Ash.S</a>
 	
 </aside>
           	<div class='main'>
           		<article class='article'>
 	<header class='article_header'>
-		<h1>Ash</h1>
+		<h1>Ash.S</h1>
 	</header>
 	<div class='article_body'>
-		<h1 id="function">function</h1>
-<h3 id="play">play</h3>
-<p>Create an instance of Ash.s and start the animation automatically.</p>
+		<h1 id="constructor">Constructor</h1>
 <table>
 <thead>
 <tr>
@@ -73,8 +67,9 @@ $(function(){
 </tr>
 </tbody>
 </table>
-<p>return an instance of Ash.s</p>
-<h3 id="stop">stop</h3>
+<h1 id="function">function</h1>
+<h3 id="play">play</h3>
+<p>play the animation from one frame to another.</p>
 <table>
 <thead>
 <tr>
@@ -85,50 +80,53 @@ $(function(){
 </thead>
 <tbody>
 <tr>
-<td>script</td>
+<td>startFrame</td>
 <td style="text-align:center">Yes</td>
-<td>An instance of Ash.S</td>
+<td>Define the frame to start the animation. Default 1</td>
+</tr>
+<tr>
+<td>endFrame</td>
+<td style="text-align:center">Yes</td>
+<td>Define the frame to end the animation. Default the last frame</td>
+</tr>
+<tr>
+<td>repeat</td>
+<td style="text-align:center">Yes</td>
+<td>How many times will the animation repeat. Default 1</td>
 </tr>
 </tbody>
 </table>
-<h1 id="property">property</h1>
+<h3 id="continue">continue</h3>
+<p>play the animation from where it stopped.</p>
+<h3 id="stop">stop</h3>
+<p>stop the animation.</p>
+<h3 id="reverse">reverse</h3>
+<p>play the animation from the endFrame to the startFrame.</p>
+<h3 id="repeat">repeat</h3>
+<p>repeat the animation</p>
 <table>
 <thead>
 <tr>
-<th>name</th>
-<th style="text-align:center">type</th>
+<th>parameter</th>
+<th style="text-align:center">optional</th>
 <th>description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Browser</td>
-<td style="text-align:center">Object</td>
-<td>Offer some browser across support</td>
-</tr>
-<tr>
-<td>Core</td>
-<td style="text-align:center">Object</td>
-<td>Offer some bascial function</td>
-</tr>
-<tr>
-<td>S</td>
-<td style="text-align:center">Object</td>
-<td>The class to create animation instance</td>
-</tr>
-<tr>
-<td>Tween</td>
-<td style="text-align:center">Object</td>
-<td>An public object to manager the easing formula</td>
+<td>num</td>
+<td style="text-align:center">Yes</td>
+<td>How many times will the animation repeat Default 1</td>
 </tr>
 </tbody>
 </table>
+<h1 id="property">property</h1>
 		
 	</div>
 	<footer class='article_footer'>
 		<div class="pagination">
 			
-			<a  class="next" href="ash.s.html">Next →</a> 	 	
+			 	 	
 		</div>		
 	</footer>
 </article>
