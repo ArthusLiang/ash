@@ -92,7 +92,7 @@ var play=function(scripts,renderGap,endFunc,stopFunc){
 
 ### scripts
 
-The scripts is the most important argument. Let's its element script in our site. The following table shows the attributes for the script.g
+The scripts is the most important argument. Let's its element script in our site. The following table shows the attributes for the script.
 
 | attribute       | optional      | description                                                                   |
 | ----------------|:-------------:| ------------------------------------------------------------------------------|
