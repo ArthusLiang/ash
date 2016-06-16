@@ -97,6 +97,11 @@
             }
         }
     },
+    prop=function(dom,key,value){
+        if(dom!=null){
+            dom[key]=value;
+        }
+    },
     access=function(elem,key,value,fn){
         var length = elem.length;
         //fake bool
@@ -234,11 +239,13 @@
         },
         fnPoint:{
             css:css,
-            attr:attr
+            attr:attr,
+            prop:prop
         }
     };
     var IRDCSS = new CommonIRD('css');
     var IRDATTR = new CommonIRD('attr');
+    var IRDPROP = new CommonIRD('prop');
     var IRDDELEGATE = new function(){
         this.Name = 'delegate';
         this.before = function(time){
@@ -699,6 +706,7 @@
     Ash.Browser = browser;
     Ash.loadIRD(IRDCSS);
     Ash.loadIRD(IRDATTR);
+    Ash.loadIRD(IRDPROP);
     Ash.loadIRD(IRDDELEGATE);
     //attr
 
