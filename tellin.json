@@ -19,8 +19,9 @@
 		"Docs":"../docs/get-start.html",
 		"Api":"../api/ash.html"
 	},
-	"_page_item_num":1,
-	"_page_btn_num":3,	
+	"_page_item_num":5,
+	"_page_btn_num":5,
+	"_page_for_index":true,	
 	"Source_css":"./css/",
 	"Source_js":"./js/",
 	"Source_img":"./img/",
