@@ -151,7 +151,7 @@
                         }
                     //set start val
                     }else{
-                        _setWhenStart[name]=_val1;
+                        _setWhenStart[name]=_s1[name]+'';
                     }
                 }
                 for(var name in _s2){
