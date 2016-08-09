@@ -1,3 +1,9 @@
+/*
+ * @Author:     yulianghuang
+ * @Update Date  2016/08/9
+ * @Site http://jsonic.net/ash/docs/get-start.html
+ @ MIT
+*/
 (function(){
     //regular expression
     var support ={},
@@ -127,6 +133,8 @@
                     _setWhenStart={},
                     _setAnimation={},
                     _setWhenEnd={},
+                    _setWhenStartWithEnd={},
+                    _setWhenEndWithStart={},
                     _cacheData={};
                 for(var name in _s1){
                     _prop2 = _s2[name];
@@ -162,9 +170,17 @@
                     }
                 }
 
+                Ash.Core.extend(_setWhenStartWithEnd,_setWhenStart);
+                Ash.Core.extend(_setWhenStartWithEnd,_setWhenEnd,false);
+
+                Ash.Core.extend(_setWhenEndWithStart,_setWhenEnd);
+                Ash.Core.extend(_setWhenEndWithStart,_setWhenStart,false);
+
                 opt.Cache[spriteName]={
                     set_start:_setWhenStart,
                     set_end:_setWhenEnd,
+                    set_startWithEnd:_setWhenStartWithEnd,
+                    set_endWithStart:_setWhenEndWithStart,
                     set_duration:_setAnimation,
                     data:_cacheData
                 };
@@ -179,21 +195,33 @@
         before:function(sprite){
             initViaReg(sprite,this.Name);
         },
-        excute:function(sprite,time){
+        excute:function(sprite,time,stateOrder){
             var lastTime = sprite.time,
-                dom = sprite.dom;
-            if(time === 0 || time === sprite.dead){
-                var _to_set = sprite.Cache[this.Name].set_start;
-                for(var name in _to_set){
-                    access(dom,name,_to_set[name],this.FN);
+                dom = sprite.dom,
+                _to_setName;
+            //if(time === 0 || time === sprite.dead){
+
+            if(stateOrder===undefined){
+                if(time ===0){
+                    _to_setName = time ===lastTime? 'set_endWithStart' : 'set_start';
+                }else if(time === lastTime){
+                    _to_setName = 'set_end';
+                }
+            }else{
+                if(stateOrder){
+                    _to_setName = time ===lastTime? 'set_endWithStart' :  'set_start';
+                }else{
+                    _to_setName = time ===0? 'set_startWithEnd' :  'set_end';
                 }
             }
-            if(time === lastTime){
-                var _to_set = sprite.Cache[this.Name].set_end;
+
+            if(_to_setName){
+                var _to_set = sprite.Cache[this.Name][_to_setName];
                 for(var name in _to_set){
                     access(dom,name,_to_set[name],this.FN);
-                }
+                }     
             }
+
             var _replaceIndex,
                 _tmp,
                 _val,
@@ -251,7 +279,7 @@
         this.before = function(time){
 
         };
-        this.excute = function(sprite,time){
+        this.excute = function(sprite,time,stateOrder){
             sprite.delegate(time,sprite.time);
         };
         this.preExcute = function(time){
@@ -498,25 +526,36 @@
         };
 
         var Sprite = function(opt){
-            opt = Core.extend(opt,{
-                delay:0,
-                time:30,
-                tween:'linear'
-            },false);
-            opt.dead=opt.delay+opt.time;
-            Core.extend(this,opt);
-            this.Cache = {};
-            if(typeof this.tween === 'function'){
-                this.fnTween = this.tween;
-            }else if(typeof this.tween === 'string' && typeof tween[this.tween] === 'function'){
-                this.fnTween = tween[this.tween];
-            }else{
-                this.fnTween = tween.linear;
-            }
-
-            this.before();
+            this.init(opt);
         };
         Sprite.prototype={
+            init:function(opt){
+                opt = Core.extend(opt,{
+                    delay:0,
+                    time:30,
+                    tween:'linear'
+                },false);
+                opt.dead=opt.delay+opt.time;
+                Core.extend(this,opt);
+                this.Cache = {};
+                if(typeof this.tween === 'function'){
+                    this.fnTween = this.tween;
+                }else if(typeof this.tween === 'string' && typeof tween[this.tween] === 'function'){
+                    this.fnTween = tween[this.tween];
+                }else{
+                    this.fnTween = tween.linear;
+                }
+                this.before();
+            },
+            update:function(opt){
+                //clear
+                for(var p in this){
+                    if(this.hasOwnProperty(p)){
+                       delete this[p]; 
+                   }
+                }
+                this.init(this);
+            },
             before:function(){
                 var _ird=[];
                 for(var name in IRD){
@@ -527,40 +566,30 @@
                 this.Ird = _ird;
                 this.fnIRD('before');
             },
-            fnIRD:function(name,i){
+            fnIRD:function(name,i,args2){
                 var _ird = this.Ird;
                 for(var n in _ird){
-                    _ird[n][name](this,i);
+                    _ird[n][name](this,i,args2);
                 }
             },
             preExcute:function(){
                 this.fnIRD('preExcute');
             },
-            excute:function(time){
+            excute:function(time,stateOrder){
                 if(time>=this.delay && time<= this.dead){
-                    this.fnIRD('excute',time-this.delay);
+                    this.fnIRD('excute',time-this.delay,stateOrder);
+                }else if(stateOrder!==undefined){
+                    this.fnIRD('excute',stateOrder ? this.dead:this.delay,stateOrder);
                 }
             }
         };
 
         var Scripts = function(){
-            var deadTime=0,
-                tmpInstance,
-                i=0,
+            var i=0,
                 l= arguments.length,
-                scripts,renderGap,endFunc,stopFunc;
+                scripts,endFunc,stopFunc;
 
             this.Sprites=[];
-
-            /*
-            //repeat
-            if(l>0 && typeof arguments[i] === 'number'){
-                this.Repeat = arguments[i];
-                i++;
-            }else{
-                this.Repeat=1;
-            }
-            */
 
             //scripts
             if(i>=l || !Core.isArray(arguments[i])){
@@ -589,21 +618,72 @@
                 this.stopFunc = arguments[i];
             }
 
-            for(var n in scripts){
-                tmpInstance = new Sprite(scripts[n],renderGap);
-                //set deadTime
-                if(tmpInstance.dead>deadTime){
-                    deadTime = tmpInstance.dead;
-                }
-                this.Sprites.push(tmpInstance);
-            }
-            this.DeadTime = deadTime;
+            this.add(scripts);
         };
         Scripts.prototype={
-            renderEach:function(i){
-                for(var m in this.Sprites){
-                    this.each('excute',i);
+            add:function(scripts){
+                var deadTime = this.DeadTime || 0,
+                    _sprites=[],
+                    tmpInstance;
+                for(var n in scripts){
+                    tmpInstance = new Sprite(scripts[n]);
+                    //set deadTime
+                    if(tmpInstance.dead>deadTime){
+                        deadTime = tmpInstance.dead;
+                    }
+                    _sprites.push(tmpInstance);
                 }
+                this.DeadTime = deadTime;
+                this.Sprites=this.Sprites.concat(_sprites);
+                this.Sprites.sort(this._sort);
+                return _sprites;
+            },
+            update:function(sprites,scripts){
+                if(sprites.length=== scripts.length){
+                    var p;
+                    for(var i=0,l=sprites.length;i<l;i++){
+                        p = sprites[i];
+                        p.update(scripts[i]);
+                        if(p.dead>this.DeadTime){
+                            this.DeadTime = p.dead;
+                        }
+                    }
+                    this.sort();
+                }else{
+                    this.remove(sprites);
+                    sprites = this.add(scripts);
+                }
+            },
+            remove:function(sprites,ifRelease){
+                var _index,i;
+                for(i=sprites.length-1;i>-1;i--){
+                    _index = this.Sprites.indexOf(sprites[i]);
+                    if(_index!=-1){
+                        this.Sprites.splice(_index,1);                     
+                    }
+                }
+                this.sort();
+                ifRelease && (delete sprites);
+            },
+            sort:function(){
+                this.DeadTime=0;
+                for(var i=this.Sprites.length-1;i>-1;i--){
+                    this.DeadTime = Math.max(this.DeadTime,this.Sprites[i].dead);
+                }
+            },
+            _sort:function(a,b){
+                var ret;
+                if(a.delay === b.delay){
+                    ret = a.dead > b.dead;
+                }else{
+                    ret = a.delay > b.delay;
+                } 
+                return ret? 1:-1;
+            },
+            renderEach:function(i){
+                //for(var m in this.Sprites){
+                this.each('excute',i);
+                //}
             },
             renderGap:function(i){
                 if(i% this.RenderGap===0){
@@ -689,9 +769,49 @@
             repeat:function(num){
                 this.play(undefined,undefined,num);
             },
+            _stateOrder:function(frame){
+                var s = this.Sprites,
+                    p,
+                    i=0,
+                    l=s.length;
+                for(;i<l;i++){
+                    p = s[i];
+                    if(frame>=p.delay){
+                        p.excute(frame,true)
+                    }else{
+                        break;
+                    }
+                }
+            },
+            _stateDisOrder:function(frame){
+                var s = this.Sprites,
+                    p,
+                    i=s.length;
+                for(;i>-1;i--){
+                    p = s[i];
+                    if(frame<=p.dead){
+                        p.excute(frame,false);
+                    }else{
+                        break;
+                    }
+                }
+            },
+            state:function(frame,order){
+                frame = frame || this.DeadTime;
+                order = order === undefined ? true : order;
+                cancelRequestAnimationFrame(this.RequestId);
+                this.RequestId=null;
+                if(order){
+                    this._stateOrder(frame);
+                }else{
+                    this._stateDisOrder(frame);
+                }
+                this.CurrentFrame = frame;
+            }
         };
         //expose!!!
         this.S = Scripts;
+        this.Sprite = Sprite;
 
         this.play=function(scripts,renderGap,endFunc,stopFunc){
             var _script = new Scripts(scripts,renderGap,endFunc,stopFunc);
