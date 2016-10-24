@@ -250,7 +250,7 @@
                 lastTime = sprite.time,
                 data = sprite.Cache[this.Name].set_duration,
                 cache = sprite.Cache[this.Name].data,
-                tween = sprite.tween;
+                tween = sprite.fnTween;
             for(var time=0;time<lastTime;time++){
                 for(var name in data){
                     if(cache[name][time]===undefined){
@@ -422,9 +422,19 @@
                 if ((t/=d/2) < 1) return c/2*t*t + b;
                 return -c/2 * ((--t)*(t-2) - 1) + b;
             },
+            //to delete
             IntLinear:function(t,b,c,d){
                 return parseInt(c*t/d + b);
             },
+            linearInt:function(t,b,c,d){
+                return parseInt(c*t/d + b);
+            },      
+            easeInInt:function(t,b,c,d){
+                return parseInt(c*(t/=d)*t + b);
+            },
+            easeOutInt:function(t,b,c,d){
+                return parseInt(-c *(t/=d)*(t-2) + b);
+            },    
             rgbaLinear:function(t,b,c,d){
                 if((b>>0) === b && (c >>0)===c){
                     return  parseInt(c*t/d + b);
@@ -639,8 +649,19 @@
                 return _sprites;
             },
             update:function(sprites,scripts){
+                this.remove(sprites);
+                var _val = this.add(scripts);
+                while(sprites.length>0){
+                    delete sprites.pop();
+                }
+                for(var i=0,l=_val.length;i<l;i++){
+                    sprites.push(_val[i]);
+                }
+            },
+            update2:function(sprites,scripts){
                 if(sprites.length=== scripts.length){
                     var p;
+                    console.log(1,sprites);
                     for(var i=0,l=sprites.length;i<l;i++){
                         p = sprites[i];
                         p.update(scripts[i]);
@@ -651,7 +672,14 @@
                     this.sort();
                 }else{
                     this.remove(sprites);
-                    sprites = this.add(scripts);
+                    var _val = this.add(scripts);
+                    while(sprites.length>0){
+                        delete sprites.pop();
+                    }
+                    for(var i=0,l=_val.length;i<l;i++){
+                        sprites.push(_val[i]);
+                    }
+                    //console.log(2,sprites); 
                 }
             },
             remove:function(sprites,ifRelease){
