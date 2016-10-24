@@ -14,10 +14,16 @@
 		"View":"api.ejs",
 		"Data":"./api",
 		"Controller":"detail"
+	},{
+		"Name":"Blog",
+		"View":"api.ejs",
+		"Data":"./blog",
+		"Controller":"detail"
 	}],
 	"Nav":{
 		"Docs":"../docs/get-start.html",
-		"Api":"../api/ash.html"
+		"Api":"../api/ash.html",
+		"Blog":"../blog/animation-foundation.html"
 	},
 	"_page_item_num":5,
 	"_page_btn_num":5,
