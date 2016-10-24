@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  		<title>Time Unit | Ash - docs</title>
+<meta charset='utf-8'>
+<link rel="icon" type="image/x-icon" href="../img/fav.ico">
+<meta name="viewport" content="width=device-width,minimal-ui"  >
+<meta name="keywords" content="Jsonic,javascript,html5,web audio,前端框架" />
+<meta name="description" content="A javascript framework named Jsonic. Make user experience on sound more wonderful." />
+<link rel="stylesheet" type="text/css" href="../css/public.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../css/github_gist.css" media="screen">
+<script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="../js/ash.js"></script>
+<script type="text/javascript" src="../js/highlight.pack.js"></script>
+<style type="text/css">/*demo1*/ 
+.demo_block{position:absolute; top:10px; left:0px; width:60px; height:60px; background-color:#64B5F6;border-radius:50%;}
+.demo_holder{width: 100%; height: 200px; position: relative;}
+/*demo1*/
+</style>
+<script type="text/javascript">
+$(function(){
+//demo1
+	var myAsh = new Ash.S([{
+		    dom: document.getElementById('demo_block'),
+		    css:[{left:'0px',width:'60px',height:'60px'},
+		    {left:'400px',width:'40px',height:'40px'}],
+		    time:200,
+		    tween:'bounceEaseIn'
+		 }]),
+		 myAsh2 = new Ash.S([{
+		    dom: document.getElementById('demo_block2'),
+		    css:[{left:'0px',width:'60px',height:'60px'},
+		    {left:'400px',width:'40px',height:'40px'}],
+		    time:200,
+		    tween:'bounceEaseIn'
+		 }],4);
+	myAsh.repeat(Infinity);
+	myAsh2.repeat(Infinity);
+	//demo1
+});
+</script>
+  </head>
+  <body>
+  		<nav class='nav'>
+	<a class=current href='../docs/get-start.html' >Docs</a><a  href='../api/ash.html' >Api</a>
+</nav>
+<div class='board'></div>
+      	<div class='container'>
+      		<aside class='aside'>
+	
+		<a   href='get-start.html'>Get Start</a>
+	
+		<a   href='instance.html'>Instance</a>
+	
+		<a   href='tween.html'>Tween</a>
+	
+		<a   href='ird.html'>IRD</a>
+	
+		<a class=current  href='time-unit.html'>Time Unit</a>
+	
+</aside>
+          	<div class='main'>
+          		<article class='article'>
+	<header class='article_header'>
+		<h1>Time Unit</h1>
+	</header>
+	<div class='article_body'>
+		<h1 id="how-browser-count-time-">How browser count time?</h1>
+<h2 id="browser-core">Browser core</h2>
+<p>In the past, we usually use setTimeout and setInterval to build HTML animation. The time unit for thoes function is millisecond. Because of the way browser run its thread, the time unit here could not be the real time unit. The thread in another big thing, you can find something to learn anywhere else. </p>
+<p>In Ash, we give up the real time unit and use frame instead. If you have any animation foundation or flash experience, you may know what&#39;s frame and keyframe. In short, frame is each static shot for animation. Ash.js requires you to input 2 keyframe for each period of animation, and it will generate its tween animation automatically.</p>
+<h2 id="new-api">New Api</h2>
+<p>Benefit from the new HTML5 api, we have new function to control the animation. <code>requestAnimationFrame</code> is a very powerful api, ash.js will try to reader HTML in each its each callback.</p>
+<h1 id="parameters-in-ash-js">Parameters in Ash.js</h1>
+<h2 id="time-and-delay">time and delay</h2>
+<p>The time unit is mostly used in Sprite. (delay and time) It&#39;s so simple to understand.</p>
+<pre><code>Ash.play([{
+    dom:document.getElementById(&#39;Hello&#39;),
+    css:[{width:&#39;100px&#39;},{width:&#39;200px&#39;}],
+    time:20,
+    delay:10
+}]);
+</code></pre><h2 id="reander-gap">reander gap</h2>
+<p>Here I want to mention the secord arugments in the function <code>Ash.play</code>. It&#39;s an optional integer. It defines the frequence that Ash.js render the HTML. Here is a demo.</p>
+<h3 id="html">html</h3>
+<pre><code>   &lt;div class=&#39;demo_holder&#39;&gt;
+    &lt;div id=&quot;demo_block&quot; class=&#39;demo_block&#39;&gt;&lt;/div&gt;
+    &lt;div id=&quot;demo_block2&quot; style=&#39;top:100px;&#39; class=&#39;demo_block&#39;&gt;&lt;/div&gt;
+   &lt;/div&gt;
+</code></pre><h3 id="css">css</h3>
+<pre><code>.demo_block{position:absolute; top:10px; left:0px; width:60px; height:60px; background-color:#64B5F6;border-radius:50%;}
+.demo_holder{width: 100%; height: 200px; position: relative;}
+</code></pre><h3 id="javascript">javascript</h3>
+<pre><code>    var myAsh = new Ash.S([{
+            dom: document.getElementById(&#39;demo_block&#39;),
+            css:[{left:&#39;0px&#39;,width:&#39;60px&#39;,height:&#39;60px&#39;},
+            {left:&#39;400px&#39;,width:&#39;40px&#39;,height:&#39;40px&#39;}],
+            time:200,
+            tween:&#39;bounceEaseIn&#39;
+         }]),
+         myAsh2 = new Ash.S([{
+            dom: document.getElementById(&#39;demo_block2&#39;),
+            css:[{left:&#39;0px&#39;,width:&#39;60px&#39;,height:&#39;60px&#39;},
+            {left:&#39;400px&#39;,width:&#39;40px&#39;,height:&#39;40px&#39;}],
+            time:200,
+            tween:&#39;bounceEaseIn&#39;
+         }],4);
+    myAsh.repeat(Infinity);
+    myAsh2.repeat(Infinity);
+</code></pre><h3 id="demo">demo</h3>
+<div class='demo_con'><!--demo1-->
+  	 <div class='demo_holder'>
+    	<div id="demo_block" class='demo_block'></div>
+    	<div id="demo_block2" style='top:100px;' class='demo_block'></div>
+  	 </div>
+  <!--demo1--></div>
+		
+	</div>
+	<footer class='article_footer'>
+		<div class="pagination">
+			<a  class="prev" href="ird.html">← Prev</a>
+			 	 	
+		</div>		
+	</footer>
+</article>
+       	
+          	</div>
+      	</div>	
+      <footer class='copyright'>
+	<p>©2015-2016 <a target="_blank" href="https://en.wikipedia.org/wiki/MIT_License" class='license'>MIT license</a></p>
+</footer>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

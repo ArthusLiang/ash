@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  		<title>IRD | Ash - docs</title>
+<meta charset='utf-8'>
+<link rel="icon" type="image/x-icon" href="../img/fav.ico">
+<meta name="viewport" content="width=device-width,minimal-ui"  >
+<meta name="keywords" content="Jsonic,javascript,html5,web audio,前端框架" />
+<meta name="description" content="A javascript framework named Jsonic. Make user experience on sound more wonderful." />
+<link rel="stylesheet" type="text/css" href="../css/public.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../css/github_gist.css" media="screen">
+<script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="../js/ash.js"></script>
+<script type="text/javascript" src="../js/highlight.pack.js"></script>
+<style type="text/css"></style>
+<script type="text/javascript">
+$(function(){
+});
+</script>
+  </head>
+  <body>
+  		<nav class='nav'>
+	<a class=current href='../docs/get-start.html' >Docs</a><a  href='../api/ash.html' >Api</a>
+</nav>
+<div class='board'></div>
+      	<div class='container'>
+      		<aside class='aside'>
+	
+		<a   href='get-start.html'>Get Start</a>
+	
+		<a   href='instance.html'>Instance</a>
+	
+		<a   href='tween.html'>Tween</a>
+	
+		<a class=current  href='ird.html'>IRD</a>
+	
+		<a   href='time-unit.html'>Time Unit</a>
+	
+</aside>
+          	<div class='main'>
+          		<article class='article'>
+	<header class='article_header'>
+		<h1>IRD</h1>
+	</header>
+	<div class='article_body'>
+		<h1 id="change-dom-s-attributes-while-playing-animation">change dom&#39;s attributes while playing animation</h1>
+<p>Ash.js can not only change make the css animation, but also change dom&#39;s attibutes. The only thing you need to do is to set &#39;attr&#39; property in scripts.</p>
+<h3 id="javascript">javascript</h3>
+<pre><code>var block = document.getElementById(&#39;demo_block&#39;),
+    myAsh = new Ash.S([{
+        dom: block,
+        css:[{left:&#39;0px&#39;,width:&#39;60px&#39;,height:&#39;60px&#39;},
+                 {left:&#39;400px&#39;,width:&#39;40px&#39;,height:&#39;40px&#39;}],
+        time:200,
+        tween:&#39;bounceEaseIn&#39;,
+        attr:[{&#39;data-i&#39;:0},{&#39;data-i&#39;:1}]
+     }]);
+myAsh.repeat(Infinity);
+</code></pre><p>&#39;attr&#39; is useful in SVG animation and MVVM framework</p>
+<h1 id="build-your-own-ird">build your own IRD</h1>
+<p>We the core parts which deal the &#39;css&#39; and &#39;attr&#39; as IRD. You can define your own IRD according to the following code.</p>
+<pre><code>var MyIRD = new function(){
+    this.Name = &#39;MyIRD&#39;;
+    this.before = function(time){
+
+    };
+    this.excute = function(sprite,time){
+        var arg = sprite.MyIRD;
+        //excute your code here
+    };
+    this.preExcute = function(time){
+
+    };
+};
+Ash.loadIRD(MyIRD);
+//use
+Ash.play([{
+    MyIRD:{},
+    time:100
+}]);
+</code></pre>		
+	</div>
+	<footer class='article_footer'>
+		<div class="pagination">
+			<a  class="prev" href="tween.html">← Prev</a>
+			<a  class="next" href="time-unit.html">Next →</a> 	 	
+		</div>		
+	</footer>
+</article>
+       	
+          	</div>
+      	</div>	
+      <footer class='copyright'>
+	<p>©2015-2016 <a target="_blank" href="https://en.wikipedia.org/wiki/MIT_License" class='license'>MIT license</a></p>
+</footer>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

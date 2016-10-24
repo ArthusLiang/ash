@@ -1,3 +1,8 @@
+Title: Get Start
+Desc: Ash is a small and feature-rich javascript library. It helps to improve the interaction of animation in HTML5 website or apps. 
+SortIndex: 1
+IndexPage: true
+---
 Ash is a small and feature-rich javascript library. It helps to improve the interaction of animation in HTML5 website or apps. With Ash, you can control different animation in one time-axis easily. The most exciting thing is that you can write your own plug-in for Ash, this will enable you to implement much more fantastical effect.
 
 # Write you first animation
@@ -30,9 +35,10 @@ I will teach you how to use Ash to make amazing thing. Make sure you have loaded
 ### test.css
 
 ```
-
+/*demo1*/ 
 .demo_block{position:absolute; top:50px; left:0px; width:60px; height:60px; background-color:#64B5F6;border-radius:50%;}
 .demo_holder{width: 100%; height: 200px; position: relative;}
+/*demo1*/
 .demo_btn{display: inline-block; padding: 10px 20px; text-align: center; color: white; border-radius: 4px; background-color: #03A9F4; cursor: pointer;}
 .demo_btn:hover{ background-color: #0288D1; }
 ```
@@ -41,6 +47,7 @@ I will teach you how to use Ash to make amazing thing. Make sure you have loaded
 
 ```
 window.onload = function(){
+	//demo1
 	var isMoving = false; 
 		 block = document.getElementById('demo_block');
 	document.getElementById('demo_btn').onclick= function(){
@@ -55,9 +62,15 @@ window.onload = function(){
 			});		
 		}
 	};
+	//demo1
 };
 ```
 
+### demo
+
+Please click the 'Play' button to check the effect of the code.
+
+demo1
 
 # Learn the basical usage
 
@@ -106,7 +119,3 @@ setTimeout(function(){
     Ash.stop(id);
 },1000);
 ```
-
-Website: [http://jsonic.net/ash/docs/get-start.html](http://jsonic.net/ash/docs/get-start.html)
-
-Email: ArthusLiang@gmail.com
