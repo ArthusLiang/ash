@@ -1,6 +1,6 @@
 {
-  "name": "ash",
-  "version": "1.0.0",
+  "name": "ash-motion-test",
+  "version": "1.0.4",
   "description": "animation framework",
   "main": "index.js",
   "scripts": {
