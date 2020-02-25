@@ -7,5 +7,6 @@ jobs:
     steps:
     - name: Automated releases for npm packages.
       uses: mikeal/merge-release@v4.0.7
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      NPM_AUTH_TOKEN: ${{ secrets.npm }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.npm }}
