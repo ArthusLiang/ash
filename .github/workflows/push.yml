@@ -11,7 +11,7 @@ jobs:
     - name: Docker Lint
       uses: luke142367/Docker-Lint-Action@v1.0.0
       env:
-        GITHUB_TOKEN: ${{ secrets.noAdmin }}
+        GITHUB_TOKEN: ${{ secrets.full }}
         TARGET: Dockerfile
     - name: Build Docker
       run: docker build -t test .
@@ -30,5 +30,5 @@ jobs:
       if: github.ref == 'refs/heads/master'
       uses: mikeal/merge-release@master
       env:
-        GITHUB_TOKEN: ${{ secrets.noAdmin }}
+        GITHUB_TOKEN: ${{ secrets.full }}
         NPM_AUTH_TOKEN: ${{ secrets.npm }}
