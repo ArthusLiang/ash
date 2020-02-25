@@ -13,6 +13,10 @@
   "keywords": [
     "animation"
   ],
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
   "author": "arthus huang",
   "license": "MIT",
   "bugs": {
