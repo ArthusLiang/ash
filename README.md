@@ -2,7 +2,7 @@ Ash is a small and feature-rich javascript library. It helps to improve the inte
 
 # Write you first animation
 
-I will teach you how to use Ash to make amazing thing. Make sure you have loaded Ash.js before you try to write any demo. Here is a very easy demo to move an element;
+I will teach you how to use Ash to make amazing thing. Make sure you have loaded Ash.js before you try to write any demo. Here is a very easy demo to move an element.
 
 ### html
 
