@@ -9,7 +9,7 @@ jobs:
     - name: Shell Linter
       uses: azohra/shell-linter@v0.2.0
     - name: Echo
-      run: echo ${{ secrets.github }}
+      run: echo ${{ secrets.GITHUB_TOKEN }}
     - name: Docker Lint
       uses: luke142367/Docker-Lint-Action@v1.0.0
       env:
@@ -32,5 +32,5 @@ jobs:
       if: github.ref == 'refs/heads/master'
       uses: mikeal/merge-release@master
       env:
-        GITHUB_TOKEN: ${{ secrets.github }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_AUTH_TOKEN: ${{ secrets.npm }}
